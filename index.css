@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 340 100% 98%;
+    --foreground: 325 50% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 325 50% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 325 50% 10%;
+
+    --primary: 340 100% 68%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 325 50% 95%;
+    --secondary-foreground: 325 50% 25%;
+
+    --muted: 325 10% 95%;
+    --muted-foreground: 325 20% 40%;
+
+    --accent: 340 100% 75%;
+    --accent-foreground: 325 50% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 340 70% 90%;
+    --input: 340 70% 90%;
+    --ring: 340 100% 68%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 325 50% 5%;
+    --foreground: 325 10% 90%;
+
+    --card: 325 50% 5%;
+    --card-foreground: 325 10% 90%;
+
+    --popover: 325 50% 5%;
+    --popover-foreground: 325 10% 90%;
+
+    --primary: 340 100% 68%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 325 50% 15%;
+    --secondary-foreground: 325 10% 90%;
+
+    --muted: 325 50% 15%;
+    --muted-foreground: 325 10% 70%;
+
+    --accent: 340 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 325 50% 15%;
+    --input: 325 50% 15%;
+    --ring: 340 100% 68%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+  }
+}
+
+@layer components {
+  .candle {
+    @apply relative w-12 h-32 mx-auto;
+  }
+
+  .candle-body {
+    @apply w-12 h-32 bg-white rounded-sm relative overflow-hidden shadow-md;
+  }
+
+  .candle-flame {
+    @apply absolute w-8 h-10 -top-8 left-1/2 -translate-x-1/2 bg-gradient-to-t from-yellow-400 to-orange-300 rounded-full 
+           animate-flicker shadow-glow transform-origin-bottom;
+  }
+
+  .candle-extinguished .candle-flame {
+    @apply opacity-0 transition-opacity duration-300;
+  }
+
+  .balloon {
+    @apply relative w-20 h-24 rounded-full transition-all duration-300;
+  }
+
+  .balloon-string {
+    @apply absolute w-0.5 h-16 bg-gray-400 left-1/2 -translate-x-1/2 top-full;
+  }
+
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-md rounded-2xl shadow-lg px-6 py-8 border border-white/50;
+  }
+
+  .button-3d {
+    @apply relative overflow-hidden rounded-lg bg-primary text-white font-medium shadow-md
+           transition-all duration-300 hover:shadow-lg active:translate-y-0.5
+           active:shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/50;
+  }
+
+  .wish-card {
+    @apply glass-card mx-auto max-w-xl opacity-0 animate-scale-up;
+  }
+
+  .snap-start {
+    scroll-snap-align: start;
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 10px 2px rgba(255, 165, 0, 0.7);
+  }
+  
+  .transform-origin-bottom {
+    transform-origin: bottom center;
+  }
+}
